@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import PATHS from "../../../shared/constants/paths.js";
+import { login } from "../authSlice";
 
+import PATHS from "../../../shared/constants/paths.js";
 import TextField from "../../../shared/components/TextField";
 import SubmitButton from "../../../shared/components/SubmitButton";
 import SquareButton from "../../../shared/components/SquareButton";
@@ -10,7 +12,9 @@ import SquareButton from "../../../shared/components/SquareButton";
 const Form = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { token } = useSelector((state) => state.auth);
 
   const handleInput = (event) => {
     const { name, value } = event.target;
@@ -23,12 +27,19 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert(`id: ${email}, pw: ${password}`);
+    dispatch(login({ email, password }));
   };
 
   const handleClick = () => {
     navigate(PATHS.SIGNUP.INDEX);
   };
+
+  useEffect(() => {
+    if (token === null) {
+      return;
+    }
+    navigate(PATHS.TODOS.INDEX);
+  }, [token]);
 
   return (
     <>
