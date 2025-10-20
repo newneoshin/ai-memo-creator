@@ -1,10 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import PATHS from "../constants/paths.js";
+import PATHS from "../shared/constants/paths.js";
 
-import HomePage from "../../pages/HomePage";
-import LoginPage from "../../pages/LoginPage";
-import SignUpPage from "../../pages/SignUpPage";
+import HomePage from "../pages/HomePage";
+import LoginPage from "../pages/LoginPage";
+import SignUpPage from "../pages/SignUpPage";
 
 const router = createBrowserRouter([
   {
