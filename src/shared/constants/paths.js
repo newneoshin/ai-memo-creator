@@ -3,6 +3,12 @@ const PATHS = {
     INDEX: "/",
   },
 
+  AUTH: {
+    INDEX: "/auth",
+    LOGIN: "/auth/login",
+    SIGNUP: "/auth/signup",
+  },
+
   LOGIN: {
     INDEX: "/login",
   },
