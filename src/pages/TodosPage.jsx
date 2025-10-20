@@ -1,7 +1,9 @@
 import { useState, useMemo } from "react";
 import Logo from "../shared/components/Logo";
+import SqureButton from "../shared/components/SquareButton";
 import TodoList from "../features/todos/components/TodoList";
 import ListFilterBar from "../features/todos/components/ListFilterBar";
+import SquareButton from "../shared/components/SquareButton";
 
 const TodosPage = () => {
   const [todos, setTodos] = useState([
@@ -58,7 +60,10 @@ const TodosPage = () => {
   return (
     <div>
       <Logo />
-      <ListFilterBar onChange={setOrder} />
+      <div>
+        <ListFilterBar onChange={setOrder} />
+        <SquareButton type="other" text={"추가하기"} />
+      </div>
       <TodoList todos={filteredTodos} onToggle={handleToggle} />
     </div>
   );
