@@ -1,11 +1,11 @@
 import Logo from "../shared/components/Logo";
-import Form from "../features/signup/components/Form";
+import SignUpForm from "../features/auth/components/SignUpForm";
 
 const LoginPage = () => {
   return (
     <div>
       <Logo />
-      <Form />
+      <SignUpForm />
     </div>
   );
 };
