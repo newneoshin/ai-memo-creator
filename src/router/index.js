@@ -14,6 +14,15 @@ const router = createBrowserRouter([
     path: PATHS.ROOT.INDEX,
     children: [{ index: true, Component: HomePage }],
   },
+
+  {
+    path: PATHS.AUTH.INDEX,
+    children: [
+      { path: PATHS.AUTH.LOGIN, Component: LoginPage },
+      { path: PATHS.AUTH.SIGNUP, Component: SignUpPage },
+    ],
+  },
+
   {
     path: PATHS.LOGIN.INDEX,
     children: [{ index: true, Component: LoginPage }],
