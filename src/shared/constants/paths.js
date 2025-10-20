@@ -4,11 +4,15 @@ const PATHS = {
   },
 
   LOGIN: {
-    INDEX: "/LOGIN",
+    INDEX: "/login",
   },
 
   SIGNUP: {
-    INDEX: "/SIGNUP",
+    INDEX: "/signup",
+  },
+
+  TODOS: {
+    INDEX: "/todos",
   },
 };
 
