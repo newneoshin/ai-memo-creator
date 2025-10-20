@@ -1,8 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import Introduction from "../features/home/components/Introduction";
 import SquareButton from "../shared/components/SquareButton";
 import bgVideo from "../assets/background.mp4";
+import PATHS from "../shared/constants/paths.js";
 
 const HomePage = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(PATHS.LOGIN.INDEX);
+  };
+
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <video
@@ -20,7 +27,7 @@ const HomePage = () => {
       </div>
 
       <div className="fixed bottom-8 right-8 z-20">
-        <SquareButton text={"샤이아 라보프처럼 되기"} />
+        <SquareButton text={"샤이아 라보프처럼 되기"} onClick={handleClick} />
       </div>
     </div>
   );
