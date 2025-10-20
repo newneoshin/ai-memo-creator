@@ -8,7 +8,6 @@ const ProtectedRoute = () => {
   const isAuthed = useSelector(selectedIsAuthenticated);
 
   if (!isAuthed) {
-    console.log("no token");
     return <Navigate to={PATHS.LOGIN.INDEX} replace />;
   }
 
