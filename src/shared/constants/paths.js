@@ -19,6 +19,7 @@ const PATHS = {
 
   TODOS: {
     INDEX: "/todos",
+    ADD: "todos/add",
   },
 };
 

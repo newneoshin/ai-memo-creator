@@ -8,6 +8,7 @@ import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
 import TodosPage from "../pages/TodosPage";
+import AddTodoPage from "../pages/AddTodoPage";
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,10 @@ const router = createBrowserRouter([
   {
     path: PATHS.TODOS.INDEX,
     Component: ProtectedRoute,
-    children: [{ index: true, Component: TodosPage }],
+    children: [
+      { index: true, Component: TodosPage },
+      { path: PATHS.TODOS.ADD, Component: AddTodoPage },
+    ],
   },
 ]);
 
