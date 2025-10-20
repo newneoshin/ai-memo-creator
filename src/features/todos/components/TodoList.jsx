@@ -1,14 +1,10 @@
-const TodoList = ({ todos }) => {
+import TodoCell from "./TodoCell";
+
+const TodoList = ({ todos, onToggle }) => {
   return (
     <div className="bg-gray-50">
       {todos.map((item) => {
-        return (
-          <div key={item.id}>
-            <h3>{item.title}</h3>
-            <hr />
-            <p>{item.content}</p>
-          </div>
-        );
+        return <TodoCell key={item.id} todo={item} onToggle={onToggle} />;
       })}
     </div>
   );
