@@ -2,39 +2,38 @@ import { createSlice } from "@reduxjs/toolkit";
 import memoRepository from "../../repositories/memoRepository.js";
 
 const initialState = {
-  memos: memoRepository.getMemos() ?? [],
+  list: memoRepository.getMemos() ?? [],
 };
 
-const memosSlice = createSlice({
+const memoSlice = createSlice({
   name: "memos",
   initialState,
   reducers: {
     addMemo: (state, action) => {
-      state.memos = [action.payload, ...state.memos];
-      memoRepository.setMemos(state.memos);
+      state.memos = [action.payload, ...state.list];
+      memoRepository.setMemos(state.list);
     },
 
     modifyMemo: (state, action) => {
       const filteredMemos = state.memos.filter((item) => {
         return item.id != action.payload.id;
       });
-      state.memos = [...filteredMemos, action.payload];
-      memoRepository.setMemos(state.memos);
+      state.list = [...filteredMemos, action.payload];
+      memoRepository.setMemos(state.list);
     },
 
     removeMemo: (state, action) => {
-      const mapped = state.memos.map((memo) => {
+      const mapped = state.list.map((memo) => {
         return memo.id === action.payload.id ? action.payload : memo;
       });
-      memoRepository.setMemos(filteredMemos);
+      memoRepository.setMemos(mapped);
     },
     removeAll: (state) => {
-      state.memos = [];
+      state.list = [];
       memoRepository.removeAll();
     },
   },
 });
 
-export const { addMemo, modifyMemo, removeMemo, removeAll } =
-  memosSlice.actions;
-export default memosSlice.reducer;
+export const { addMemo, modifyMemo, removeMemo, removeAll } = memoSlice.actions;
+export default memoSlice.reducer;
