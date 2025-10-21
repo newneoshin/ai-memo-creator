@@ -6,6 +6,10 @@ const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 const responseSchema = {
   type: "object",
   properties: {
+    id: {
+      type: "string",
+      description: "configure based from uuid",
+    },
     title: {
       type: "string",
       description: "할 일의 제목",
