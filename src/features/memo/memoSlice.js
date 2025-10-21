@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const memoSlice = createSlice({
-  name: "memos",
+  name: "memo",
   initialState,
   reducers: {
     addMemo: (state, action) => {
@@ -15,19 +15,21 @@ const memoSlice = createSlice({
     },
 
     modifyMemo: (state, action) => {
-      const filteredMemos = state.list.filter((item) => {
-        return item.id != action.payload.id;
+      const mapped = state.list.map((item) => {
+        return item.id !== action.payload.id ? item : action.payload;
       });
-      state.list = [...filteredMemos, action.payload];
-      memoRepository.setMemos(state.list);
+      state.list = mapped;
+      memoRepository.setMemos(mapped);
     },
 
     removeMemo: (state, action) => {
-      const mapped = state.list.map((memo) => {
-        return memo.id === action.payload.id ? action.payload : memo;
+      const filtered = state.list.filter((memo) => {
+        return memo.id === action.payload.id;
       });
-      memoRepository.setMemos(mapped);
+      state.list = filtered;
+      memoRepository.setMemos(filtered);
     },
+
     removeAll: (state) => {
       state.list = [];
       memoRepository.removeAll();
