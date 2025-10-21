@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import SquareButton from "../../shared/components/SquareButton";
+import SquareButton from "../../../shared/components/SquareButton";
 
 export default function MemoSuggestion({ memo, onAccept, onReject }) {
   if (!memo) return null;

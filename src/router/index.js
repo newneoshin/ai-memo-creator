@@ -7,8 +7,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import HomePage from "../pages/HomePage";
 import LoginPage from "../pages/LoginPage";
 import SignUpPage from "../pages/SignUpPage";
-import TodosPage from "../pages/TodosPage";
-import AddTodoPage from "../pages/AddTodoPage";
+import MemosPage from "../pages/MemosPage";
+import AddMemoPage from "../pages/AddMemoPage";
 
 const router = createBrowserRouter([
   {
@@ -33,11 +33,11 @@ const router = createBrowserRouter([
     children: [{ index: true, Component: SignUpPage }],
   },
   {
-    path: PATHS.TODOS.INDEX,
+    path: PATHS.MEMO.INDEX,
     Component: ProtectedRoute,
     children: [
-      { index: true, Component: TodosPage },
-      { path: PATHS.TODOS.ADD, Component: AddTodoPage },
+      { index: true, Component: MemosPage },
+      { path: PATHS.MEMO.ADD, Component: AddMemoPage },
     ],
   },
 ]);
