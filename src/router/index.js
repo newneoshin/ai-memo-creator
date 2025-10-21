@@ -33,11 +33,11 @@ const router = createBrowserRouter([
     children: [{ index: true, Component: SignUpPage }],
   },
   {
-    path: PATHS.TODOS.INDEX,
+    path: PATHS.MEMO.INDEX,
     Component: ProtectedRoute,
     children: [
       { index: true, Component: TodosPage },
-      { path: PATHS.TODOS.ADD, Component: AddTodoPage },
+      { path: PATHS.MEMO.ADD, Component: AddTodoPage },
     ],
   },
 ]);

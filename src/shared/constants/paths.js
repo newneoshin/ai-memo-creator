@@ -17,9 +17,9 @@ const PATHS = {
     INDEX: "/signup",
   },
 
-  TODOS: {
-    INDEX: "/todos",
-    ADD: "todos/add",
+  MEMO: {
+    INDEX: "/memo",
+    ADD: "/memo/add",
   },
 };
 
