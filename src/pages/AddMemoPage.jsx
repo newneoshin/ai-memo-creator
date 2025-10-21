@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addMemo } from "../features/todos/todoSlice.js";
+import { addMemo } from "../features/memo/memoSlice.js";
 
-import ChatForm from "../features/addtodo/ChatForm";
-import MemoSuggestion from "../features/addtodo/MemoSuggestion";
-import memoGenerator from "../features/addtodo/memoGenerator";
+import ChatForm from "../features/memo/components/ChatForm";
+import MemoSuggestion from "../features/memo/components/MemoSuggestion";
+import memoGenerator from "../features/memo/memoGenerator.js";
 
-export default function AddTodoPage() {
+export default function AddMemoPage() {
   const [prompt, setPrompt] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [suggestion, setSuggestion] = useState(null);

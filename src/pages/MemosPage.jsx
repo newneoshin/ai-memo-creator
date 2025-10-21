@@ -1,43 +1,43 @@
 import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { modifyMemo } from "../features/todos/todoSlice.js";
+import { modifyMemo } from "../features/memo/memoSlice.js";
 
 import PATHS from "../shared/constants/paths";
 import Logo from "../shared/components/Logo";
 import SquareButton from "../shared/components/SquareButton";
-import TodoList from "../features/todos/components/TodoList";
-import ListFilterBar from "../features/todos/components/ListFilterBar";
+import MemoList from "../features/memo/components/MemoList.jsx";
+import ListFilterBar from "../features/memo/components/ListFilterBar";
 
-const TodosPage = () => {
-  const todos = useSelector((state) => state.memos.memos);
+const MemosPage = () => {
+  const memos = useSelector((state) => state.memo.list);
   const [order, setOrder] = useState("all");
-  const filteredTodos = useMemo(() => {
+  const filteredMemos = useMemo(() => {
     if (order === "incomplete") {
-      return todos.filter((item) => {
+      return memos.filter((item) => {
         return item.isCompleted === false;
       });
     } else if (order === "complete") {
-      return todos.filter((item) => {
+      return memos.filter((item) => {
         return item.isCompleted === true;
       });
     } else {
-      return todos;
+      return memos;
     }
-  }, [order, todos]);
+  }, [order, memos]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleToggle = (id, next) => {
-    const found = todos.find((todo) => {
+    const found = memos.find((todo) => {
       return todo.id === id;
     });
-    const modified = { ...found, isCompleted: !found.isCompleted };
+    const modified = { ...found, isCompleted: next };
     dispatch(modifyMemo(modified));
   };
 
   const handleClick = () => {
-    navigate(PATHS.TODOS.ADD);
+    navigate(PATHS.MEMO.ADD);
   };
 
   return (
@@ -47,9 +47,9 @@ const TodosPage = () => {
         <ListFilterBar onChange={setOrder} />
         <SquareButton type="other" text={"추가하기"} onClick={handleClick} />
       </div>
-      <TodoList todos={filteredTodos} onToggle={handleToggle} />
+      <MemoList memos={filteredMemos} onToggle={handleToggle} />
     </div>
   );
 };
 
-export default TodosPage;
+export default MemosPage;
