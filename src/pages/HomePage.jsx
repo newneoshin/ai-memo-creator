@@ -7,7 +7,7 @@ import PATHS from "../shared/constants/paths.js";
 const HomePage = () => {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(PATHS.TODOS.INDEX);
+    navigate(PATHS.MEMO.INDEX);
   };
 
   return (
