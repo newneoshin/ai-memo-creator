@@ -1,5 +1,5 @@
-export default function TodoCell({ todo, onToggle }) {
-  const { id, title, content, isCompleted, createdAt } = todo;
+export default function MemoCell({ memo, onToggle }) {
+  const { id, title, content, isCompleted, createdAt } = memo;
 
   const formattedAt = new Intl.DateTimeFormat("ko-KR", {
     dateStyle: "medium",
