@@ -1,9 +1,11 @@
 import { useState, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
+
+import PATHS from "../shared/constants/paths";
 import Logo from "../shared/components/Logo";
-import SqureButton from "../shared/components/SquareButton";
+import SquareButton from "../shared/components/SquareButton";
 import TodoList from "../features/todos/components/TodoList";
 import ListFilterBar from "../features/todos/components/ListFilterBar";
-import SquareButton from "../shared/components/SquareButton";
 
 const TodosPage = () => {
   const [todos, setTodos] = useState([
@@ -50,6 +52,7 @@ const TodosPage = () => {
       return todos;
     }
   }, [order, todos]);
+  const navigate = useNavigate();
 
   const handleToggle = (id, next) => {
     setTodos((prev) => {
@@ -57,12 +60,16 @@ const TodosPage = () => {
     });
   };
 
+  const handleClick = () => {
+    navigate(PATHS.TODOS.ADD);
+  };
+
   return (
     <div>
       <Logo />
       <div>
         <ListFilterBar onChange={setOrder} />
-        <SquareButton type="other" text={"추가하기"} />
+        <SquareButton type="other" text={"추가하기"} onClick={handleClick} />
       </div>
       <TodoList todos={filteredTodos} onToggle={handleToggle} />
     </div>
