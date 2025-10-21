@@ -1,11 +1,12 @@
 import { useState } from "react";
-import MessageList from "../features/addtodo/MessageList";
 import ChatForm from "../features/addtodo/ChatForm";
+import MemoSuggestion from "../features/addtodo/MemoSuggestion";
+import memoGenerator from "../features/addtodo/memoGenerator";
 
 export default function AddTodoPage() {
   const [prompt, setPrompt] = useState("");
-  const [messages, setMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [suggestion, setSuggestion] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -14,19 +15,23 @@ export default function AddTodoPage() {
       return;
     }
 
-    setMessages((prev) => [...prev, { role: "user", content: prompt }]);
     setPrompt("");
+    setSuggestion(null);
+    setIsLoading(true);
+    const obj = await memoGenerator.generate(prompt);
+    setSuggestion(obj ?? null);
+    setIsLoading(false);
   };
 
   return (
     <div>
-      <MessageList messages={messages} />
       <ChatForm
         prompt={prompt}
         setPrompt={setPrompt}
         onSubmit={handleSubmit}
         isLoading={isLoading}
       />
+      {suggestion && <MemoSuggestion memo={suggestion} />}
     </div>
   );
 }
