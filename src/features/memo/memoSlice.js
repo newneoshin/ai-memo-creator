@@ -10,12 +10,12 @@ const memoSlice = createSlice({
   initialState,
   reducers: {
     addMemo: (state, action) => {
-      state.memos = [action.payload, ...state.list];
+      state.list = [action.payload, ...state.list];
       memoRepository.setMemos(state.list);
     },
 
     modifyMemo: (state, action) => {
-      const filteredMemos = state.memos.filter((item) => {
+      const filteredMemos = state.list.filter((item) => {
         return item.id != action.payload.id;
       });
       state.list = [...filteredMemos, action.payload];
